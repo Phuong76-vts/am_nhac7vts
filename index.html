@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nhịp điệu mùa xuân – Toán 7</title>
+<meta name="description" content="Học liệu tương tác Âm nhạc 7 – Chủ đề 5: Nhịp điệu mùa xuân (kí hiệu tăng trường độ, tiết tấu, cồng chiêng – đàn t'rưng, hoà tấu). GV Ngô Thị Phương, THCS Võ Thị Sáu, Hải Phòng.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800;900&family=Lexend:wght@600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&display=swap');
+:root{--bg:#fff5f1;--panel:#fff;--ink:#2b1d33;--dim:#74627c;--line:#f2d6dc;--acc:#d93a73;--accdk:#9e1f52;--acc2:#2f9e72;--onacc:#fff;--gold:#e39a00;--gold2:#8a5a00;--goldbg:#fff3d6;--soft:#fbe8ec;--note:#fffafb;--inbg:#fff;
+--okbg:#e5f6ee;--okc:#17663f;--warnbg:#fff0e0;--warnc:#9a4706;--infobg:#f1ebff;--infoc:#4a2c8a;--shadow:0 3px 16px rgba(43,29,51,.08);--certbg:radial-gradient(circle at 50% 0,#fff,#ffe6ee);--certink:#2b1d33;--certacc:#d93a73}
+body{background:radial-gradient(circle at 92% -6%,rgba(255,170,195,.45),transparent 30%),radial-gradient(circle at -5% 105%,rgba(120,210,165,.25),transparent 35%),var(--bg)}
+h1,.hero h2,.cert h2,.cert .ct,.act h3,.room h3{font-family:'Baloo 2','Lexend',sans-serif!important;letter-spacing:0}
+h1{font-weight:800}
+
+*{box-sizing:border-box}[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 'Be Vietnam Pro',system-ui,sans-serif}
+.app{max-width:1140px;margin:0 auto;padding:18px 16px 26px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{display:flex;gap:14px;align-items:center}
+.logo{flex:0 0 66px;height:66px;border:2px solid var(--acc);border-radius:12px;display:flex;flex-direction:column;justify-content:center;padding:4px 9px;color:var(--acc);background:var(--panel)}
+.logo small{font:700 11px 'JetBrains Mono',monospace}.logo b{font:800 21px/1.1 'Lexend',sans-serif;white-space:nowrap}
+h1{margin:0;font:800 clamp(26px,5vw,46px)/1.08 'Lexend',sans-serif;letter-spacing:-.015em}
+.sub{font:600 12px 'JetBrains Mono',monospace;letter-spacing:.08em;color:var(--dim);margin-top:5px;text-transform:uppercase}
+.hud{display:flex;gap:8px}
+.hbtn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:8px 14px;font:600 14px 'JetBrains Mono',monospace;cursor:pointer}
+.hbtn b{color:var(--gold);font-size:17px}
+.rooms{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 22px}
+.rooms button{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:8px 14px;font:700 14px 'Be Vietnam Pro',sans-serif;cursor:pointer;display:flex;gap:7px;align-items:center}
+.rooms button .n{font:600 12px 'JetBrains Mono',monospace;color:var(--dim)}
+.rooms button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}.rooms button.on .n{color:inherit;opacity:.7}
+.chip{display:inline-block;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);border:1px solid var(--acc);border-radius:999px;padding:3px 11px;background:var(--panel)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center}
+.hero h2{font:800 clamp(26px,4.3vw,42px)/1.15 'Lexend',sans-serif;margin:12px 0;letter-spacing:-.01em}
+.hero p{color:var(--dim)}
+.quote{border-left:4px solid var(--gold);padding:2px 12px;color:var(--gold2);font-size:18px;margin:12px 0}
+.hub{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:24px}
+.room{display:flex;gap:14px;text-align:left;cursor:pointer;color:var(--ink);font:inherit;transition:transform .15s,border-color .15s}
+.room:hover{border-color:var(--acc);transform:translateY(-2px)}
+.room .t,.tile{flex:0 0 64px;height:64px;border:2px solid var(--acc);border-radius:12px;display:flex;flex-direction:column;justify-content:center;padding:4px 8px;color:var(--acc)}
+.room .t small{font:700 11px 'JetBrains Mono',monospace}.room .t b{font:800 18px/1.1 'Lexend',sans-serif;white-space:nowrap}
+.room h3{margin:0;font:700 20px/1.25 'Lexend',sans-serif}.room p{margin:3px 0 5px;color:var(--dim);font-size:14px}
+.room .st{font:700 13px 'JetBrains Mono',monospace;color:var(--gold)}
+.rhead{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:14px}
+.coach{display:flex;gap:10px;align-items:center;flex:1 1 380px}
+.coach .av{font-size:36px;line-height:1;animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-5px)}}
+.coach .say{background:var(--panel);border:1px solid var(--line);border-radius:4px 16px 16px 16px;padding:8px 13px;font-size:15px;flex:1}
+.act{margin-bottom:16px}
+.act h3{margin:0 0 4px;font:700 21px/1.3 'Lexend',sans-serif;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.bpill{font:700 12px 'JetBrains Mono',monospace;border:1px dashed var(--line);color:var(--dim);border-radius:999px;padding:2px 9px}
+.bpill.got{border:1px solid var(--gold);color:var(--gold2);background:var(--goldbg)}
+.dim{color:var(--dim)}.small{font-size:14px}
+.tnote{border:1px dashed var(--line);border-radius:14px;padding:10px 14px;margin-top:14px;background:var(--note);font-size:15px}
+.tnote summary{cursor:pointer;font-weight:800;color:var(--acc)}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.center{justify-content:center}
+.btn{border:none;border-radius:13px;padding:11px 18px;font:800 16px 'Be Vietnam Pro',sans-serif;cursor:pointer;transition:transform .1s}
+.btn:active{transform:scale(.96)}
+.btn.main{background:var(--acc);color:var(--onacc);box-shadow:0 4px 0 var(--accdk)}
+.btn.ghost{background:var(--soft);color:var(--ink)}
+.btn.line{background:transparent;border:2px solid var(--line);color:var(--ink)}
+.btn[disabled]{opacity:.45;cursor:default}
+.msg{border-radius:13px;padding:10px 14px;margin-top:12px;font-size:15.5px}
+.msg.ok{background:var(--okbg);color:var(--okc)}.msg.warn{background:var(--warnbg);color:var(--warnc)}.msg.info{background:var(--infobg);color:var(--infoc)}
+.prog{height:9px;background:var(--soft);border-radius:99px;overflow:hidden;margin:10px 0 2px}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));width:0;transition:width .35s}
+.fx{display:inline-flex;align-items:center;gap:2px;vertical-align:middle}
+.fr{display:inline-flex;flex-direction:column;text-align:center;line-height:1.05;vertical-align:middle}
+.fr b{font-weight:inherit;padding:0 3px}.fr b:first-child{border-bottom:.09em solid currentColor}
+.numin{width:84px;font:800 20px 'Be Vietnam Pro',sans-serif;text-align:center;padding:8px;border:2px solid var(--line);border-radius:12px;background:var(--inbg);color:var(--ink)}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:10px}
+.opt{border:2px solid var(--line);background:var(--panel);color:var(--ink);border-radius:14px;padding:12px 14px;font:700 17px 'Be Vietnam Pro',sans-serif;cursor:pointer;text-align:left}
+.opt:hover{border-color:var(--acc)}
+.opt.right{border-color:#16a34a;background:var(--okbg);color:var(--okc)}.opt.wrong{border-color:#dc2626;background:var(--warnbg);color:var(--warnc)}
+.big{font:800 34px 'Be Vietnam Pro',sans-serif;color:var(--acc)}
+svg{display:block;width:100%;height:auto;user-select:none;-webkit-user-select:none}
+.shake{animation:sh .35s}@keyframes sh{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.pop{animation:pp .5s}@keyframes pp{40%{transform:scale(1.15)}}
+/* quiz */
+.quiz{max-width:820px;margin:0 auto}
+.qtop{display:flex;justify-content:space-between;font:700 14px 'JetBrains Mono',monospace;color:var(--dim)}
+.qbar{height:8px;background:var(--soft);border-radius:99px;overflow:hidden;margin:8px 0 14px}.qbar i{display:block;height:100%;background:var(--gold);transition:width 1s linear}
+.qq{font:700 22px/1.4 'Lexend',sans-serif;margin:6px 0 10px}
+.cert{text-align:center;border:4px double var(--gold);border-radius:22px;padding:26px 18px;background:var(--certbg);color:var(--certink)}
+.cert .m{font:700 13px 'JetBrains Mono',monospace;letter-spacing:.2em}
+.cert h2{font:800 30px 'Lexend',sans-serif;margin:10px 0 2px;letter-spacing:.04em}
+.cert .ct{font:800 22px 'Lexend',sans-serif;color:var(--certacc)}
+.cert .who{font:900 30px 'Be Vietnam Pro',sans-serif;border-bottom:2px dashed var(--gold);display:inline-block;min-width:240px;padding:0 12px;margin:8px 0}
+.cert input{font:700 17px 'Be Vietnam Pro',sans-serif;padding:9px 12px;border:2px solid var(--line);border-radius:12px;max-width:100%;background:#fff;color:#1b2440}
+table.info{width:100%;border-collapse:collapse;font-size:15px}
+table.info th{text-align:left;vertical-align:top;padding:9px 12px 9px 0;border-bottom:1px solid var(--line);width:28%;color:var(--acc)}
+table.info td{padding:9px 0;border-bottom:1px solid var(--line)}
+footer{text-align:center;color:var(--dim);font-size:13px;padding:6px 16px 30px}
+#cf{position:fixed;inset:0;pointer-events:none;z-index:9998}
+#toast{position:fixed;left:50%;top:18px;transform:translate(-50%,-200%);background:var(--ink);color:var(--bg);padding:11px 20px;border-radius:999px;font-weight:800;z-index:9999;transition:transform .35s;box-shadow:0 10px 30px rgba(0,0,0,.25);max-width:92vw;text-align:center}
+#toast.show{transform:translate(-50%,0)}#toast:empty{display:none}
+.hscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.swipe{display:none;text-align:center;font-size:12.5px;color:var(--dim)}
+@media(max-width:820px){.hero,.grid2{grid-template-columns:1fr}}
+@media(max-width:600px){.app{padding:14px 12px}.rooms button{padding:7px 11px;font-size:13px}.panel{padding:14px}.logo{flex-basis:56px;height:56px}.swipe{display:block}.hscroll svg{min-width:640px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.qbig{font:800 21px/1.4 'Lexend',sans-serif;margin:10px 0}
+.staff{background:#fff;border:2px solid var(--line);border-radius:16px;padding:8px;margin:10px 0;overflow-x:auto}
+.staff svg{height:118px;width:auto;max-width:100%;margin:0 auto;display:block}
+.fact .staff svg{height:96px}
+.notopt svg{height:96px;width:auto;max-width:100%;display:block;margin:0 auto}
+.yn{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:10px}.yn .opt{min-width:180px;text-align:center}
+.notopts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:10px}
+.notopt{border:2px solid var(--line);border-radius:14px;background:#fff;padding:6px;cursor:pointer}
+.notopt:hover{border-color:var(--acc)}.notopt.right{border-color:#16a34a;background:var(--okbg)}.notopt.wrong{border-color:#dc2626;background:var(--warnbg)}
+.notopt .lb{font:700 13px 'JetBrains Mono',monospace;color:var(--dim);padding:2px 6px}
+.tapzone{margin-top:12px;border:3px dashed var(--acc);border-radius:20px;padding:22px;text-align:center;font:800 22px 'Baloo 2',sans-serif;color:var(--acc);background:#fff;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+.tapzone.hit{background:#ffe3ec}
+.beats{display:flex;gap:10px;justify-content:center;margin-top:10px}.beats i{width:18px;height:18px;border-radius:50%;background:var(--soft);display:block}.beats i.on{background:var(--acc)}
+.inst{display:flex;justify-content:center;flex-wrap:wrap;gap:6px}
+.inst svg{max-width:560px}
+.gong,.tube{cursor:pointer;transition:transform .08s}
+.gong.hit{transform-origin:center;animation:wob .5s}@keyframes wob{25%{transform:rotate(3deg)}75%{transform:rotate(-3deg)}}
+.tube.hit rect{fill:#ffd166}
+.fact{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--note);font-size:15.5px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;margin-top:10px}
+.counter{font:700 14px 'JetBrains Mono',monospace;color:var(--dim)}
+.seq{overflow-x:auto;margin-top:10px}
+.seq table{border-collapse:separate;border-spacing:5px;margin:0 auto}
+.seq th{font:700 14px 'Be Vietnam Pro',sans-serif;text-align:right;padding-right:6px;white-space:nowrap}
+.seq td button{width:40px;height:40px;border-radius:10px;border:2px solid var(--line);background:#fff;cursor:pointer}
+.seq td.bar button{margin-left:8px}
+.seq td button.on{background:var(--acc);border-color:var(--accdk)}
+.seq td button.now{box-shadow:0 0 0 3px var(--gold)}
+.seq tr.r0 td button.on{background:#8d5a2b;border-color:#5c3a17}.seq tr.r1 td button.on{background:#c7902b;border-color:#8a5a00}
+.seq tr.r2 td button.on,.seq tr.r3 td button.on,.seq tr.r4 td button.on{background:#2f9e72;border-color:#17663f}
+.heroinst{display:flex;gap:12px;justify-content:center;margin-top:8px;flex-wrap:wrap}
+#tp-pick{grid-template-columns:repeat(auto-fit,minmax(110px,1fr))}#tp-pick .opt{padding:9px 6px;font-size:15px}
+
+</style>
+</head>
+<body>
+<canvas id="cf"></canvas><div id="toast" role="status" aria-live="polite"></div>
+<div class="app">
+<header class="top">
+  <div class="brand"><div class="logo"><small>CĐ 5</small><b>♫</b></div><div><h1>Nhịp điệu mùa xuân</h1><div class="sub">Âm nhạc 7 · Chủ đề 5 · Nhịp điệu mùa xuân · Học liệu tương tác và mô phỏng</div></div></div>
+  <div class="hud"><button class="hbtn" id="snd" aria-label="Bật/tắt âm thanh">🔊</button><div class="hbtn">Huy hiệu <b id="bc">0</b>/<span id="bt">0</span></div></div>
+</header>
+<nav class="rooms" id="nav" aria-label="Các phòng học"></nav>
+
+<section class="view" id="v-hub">
+  <div class="hero">
+    <div><span class="chip">Phòng chờ</span><h2>Giữa đại ngàn Tây Nguyên, tiếng gì rền vang như sấm, tiếng gì róc rách như suối reo?</h2>
+<div class="quote">Gợi ý: bấm vào hai nhạc cụ bên cạnh để nghe thử!</div>
+<p>Cùng Nhạc công Mùa Xuân đi qua 4 phòng: xưởng trường độ với dấu nối, dấu chấm dôi, dấu miễn nhịp; phòng nhịp điệu nghe và gõ tiết tấu; đại ngàn Tây Nguyên với cồng chiêng, đàn t'rưng; sân khấu mùa xuân để tự hoà tấu. Hoàn thành nhiệm vụ để nhận huy hiệu và giấy chứng nhận Nghệ sĩ mùa xuân.</p>
+</div>
+    <div class="panel" style="text-align:center">
+<svg id="heroSvg" viewBox="0 0 460 300" aria-label="Chiêng đồng và đàn t'rưng, bấm để nghe"></svg>
+<div class="heroinst"><button class="btn main" id="hGong">🔔 Nghe cồng chiêng</button><button class="btn ghost" id="hTrung">🎋 Nghe đàn t'rưng</button></div>
+<div id="heroCap" class="dim small" style="margin-top:6px;min-height:22px"></div>
+</div>
+  </div>
+  <div class="hub" id="hubRooms"></div>
+</section>
+
+<!-- R1 XƯỞNG TRƯỜNG ĐỘ -->
+<section class="view" id="v-r1" hidden>
+  <div class="panel act">
+    <h3>Ba kí hiệu tăng trường độ <span class="bpill" data-badge="sym"></span></h3>
+    <div class="facts">
+      <div class="fact"><b>⌒ Dấu nối</b> – hình vòng cung, nối hai hay nhiều nốt nhạc <b>cùng cao độ</b>. Trường độ của các nốt được cộng lại, chỉ hát (đàn) một lần.<div class="staff"><svg id="sy-tie" viewBox="0 0 220 100"></svg></div><button class="btn ghost" data-play="tie">🔊 Nghe</button></div>
+      <div class="fact"><b>• Dấu chấm dôi</b> – chấm nhỏ đặt bên phải nốt nhạc, làm tăng thêm <b>một nửa</b> trường độ của nốt đó.<div class="staff"><svg id="sy-dot" viewBox="0 0 220 100"></svg></div><button class="btn ghost" data-play="dot">🔊 Nghe</button></div>
+      <div class="fact"><b>𝄐 Dấu miễn nhịp</b> – nửa vòng tròn bao quanh một dấu chấm, đặt trên nốt nhạc: được ngân, nghỉ <b>tự do</b>, không theo nhịp.<div class="staff"><svg id="sy-fer" viewBox="0 0 220 100"></svg></div><button class="btn ghost" data-play="fer">🔊 Nghe</button></div>
+    </div>
+    <div class="prog"><i id="sy-p"></i></div><div class="dim small" id="sy-c"></div>
+    <div class="qbig" id="sy-q"></div><div class="staff" id="sy-fig" hidden><svg id="sy-svg" viewBox="0 0 260 100"></svg></div>
+    <div class="opts" id="sy-o"></div><div id="sy-f"></div><div class="row"><button class="btn ghost" id="sy-nx">Câu tiếp ➜</button></div>
+  </div>
+  <div class="panel act">
+    <h3>Máy tính trường độ <span class="bpill" data-badge="dur"></span></h3>
+    <div class="dim">Quy ước nốt đen = 1 phách. Nhóm nốt dưới đây ngân dài bao nhiêu phách? Sau khi chọn, máy sẽ phát âm thanh kèm tiếng đếm phách để em kiểm chứng. Đúng 6/8 câu để nhận huy hiệu.</div>
+    <div class="prog"><i id="du-p"></i></div><div class="dim small" id="du-c"></div>
+    <div class="staff"><svg id="du-svg" viewBox="0 0 260 100"></svg></div>
+    <div class="opts" id="du-o"></div><div id="du-f"></div>
+    <div class="row"><button class="btn line" id="du-play">🔊 Nghe lại</button><button class="btn ghost" id="du-nx">Câu tiếp ➜</button></div>
+  </div>
+  <details class="tnote"><summary>Gợi ý cho giáo viên</summary>Dùng ở tiết Lí thuyết âm nhạc – Các kí hiệu tăng trường độ, trước khi đọc Bài đọc nhạc số 4. Cho học sinh vỗ tay theo tiếng đếm phách khi máy phát âm thanh. Phân biệt dấu nối (nối các nốt <b>cùng cao độ</b>) với dấu luyến (nối các nốt <b>khác cao độ</b>). Dấu miễn nhịp: người chỉ huy hoặc người biểu diễn quyết định độ dài.</details>
+</section>
+
+<!-- R2 NHỊP ĐIỆU -->
+<section class="view" id="v-r2" hidden>
+  <div class="panel act">
+    <h3>Nghe và chọn tiết tấu <span class="bpill" data-badge="listen"></span></h3>
+    <div class="dim">Bấm Nghe, rồi chọn bản nhạc đúng với tiết tấu vừa phát (nhịp 2/4). Đúng 5/6 lượt để nhận huy hiệu.</div>
+    <div class="prog"><i id="li-p"></i></div><div class="dim small" id="li-c"></div>
+    <div class="row center"><button class="btn main" id="li-play">🔊 Nghe tiết tấu</button></div>
+    <div class="notopts" id="li-o"></div><div id="li-f"></div>
+    <div class="row"><button class="btn ghost" id="li-nx">Lượt tiếp ➜</button></div>
+  </div>
+  <div class="panel act">
+    <h3>Gõ theo tiết tấu <span class="bpill" data-badge="tap"></span></h3>
+    <div class="dim">Bấm Bắt đầu: máy đếm 4 phách (1 – 2 – 1 – 2), sau đó em gõ vào khung hồng (hoặc phím cách) đúng tiết tấu trong 2 ô nhịp. Đạt từ 75% ở 2 tiết tấu khác nhau để nhận huy hiệu.</div>
+    <div class="row"><span class="dim small">Chọn tiết tấu:</span><div class="opts" id="tp-pick" style="flex:1"></div></div>
+    <div class="staff"><svg id="tp-svg" viewBox="0 0 400 100"></svg></div>
+    <div class="beats" id="tp-beats"><i></i><i></i><i></i><i></i></div>
+    <div class="row center"><button class="btn main" id="tp-go">▶ Bắt đầu</button><button class="btn line" id="tp-demo">🔊 Nghe mẫu</button></div>
+    <div class="tapzone" id="tp-zone">👏 GÕ VÀO ĐÂY</div>
+    <div id="tp-f"></div><div class="counter" id="tp-done"></div>
+  </div>
+  <details class="tnote"><summary>Gợi ý cho giáo viên</summary>Dùng để luyện tiết tấu trước khi đọc nhạc. Các tiết tấu do tác giả soạn, có dùng nốt chấm dôi và dấu nối như trong chủ đề. Trên lớp: chiếu màn hình, cả lớp vỗ tay theo; mời từng nhóm lên gõ và xem điểm chính xác. Lưu ý thiết bị cần bật âm thanh; tai nghe Bluetooth có thể làm âm thanh bị trễ.</details>
+</section>
+
+<!-- R3 TÂY NGUYÊN -->
+<section class="view" id="v-r3" hidden>
+  <div class="panel act">
+    <h3>Khám phá cồng chiêng và đàn t'rưng <span class="bpill" data-badge="explore"></span></h3>
+    <div class="dim">Bấm vào từng chiếc chiêng và từng ống nứa để nghe. Hãy so sánh: chiêng to và chiêng nhỏ, ống dài và ống ngắn, âm nào trầm hơn? Gõ đủ 3 chiếc chiêng và 5 ống nứa để nhận huy hiệu.</div>
+    <div class="grid2">
+      <div><div class="inst"><svg id="ex-gong" viewBox="0 0 420 220" aria-label="Bộ chiêng ba chiếc"></svg></div>
+        <div class="fact"><b>Cồng chiêng</b> là nhạc cụ tự thân vang thuộc bộ gõ của các dân tộc ở Tây Nguyên, được làm bằng đồng thau. Chiếc có đường kính lớn cho âm thanh trầm, rền như tiếng sấm. Cồng có núm ở giữa, chiêng có mặt phẳng.</div></div>
+      <div><div class="inst"><svg id="ex-trung" viewBox="0 0 420 240" aria-label="Đàn t'rưng"></svg></div>
+        <div class="fact"><b>Đàn t'rưng</b> làm bằng các ống nứa dài, ngắn, to, nhỏ khác nhau. Âm thanh trong trẻo, vang xa, gợi tiếng suối róc rách, tiếng xào xạc của rừng tre.</div></div>
+    </div>
+    <div class="counter" id="ex-c"></div>
+  </div>
+  <div class="grid2">
+    <div class="panel act">
+      <h3>Đôi tai tinh tường <span class="bpill" data-badge="ear"></span></h3>
+      <div class="dim">Nghe hai âm thanh rồi trả lời. Đúng 4/5 lượt để nhận huy hiệu.</div>
+      <div class="prog"><i id="ea-p"></i></div><div class="dim small" id="ea-c"></div>
+      <div class="qbig" id="ea-q"></div>
+      <div class="row center"><button class="btn main" id="ea-play">🔊 Nghe</button></div>
+      <div class="opts" id="ea-o"></div><div id="ea-f"></div><div class="row"><button class="btn ghost" id="ea-nx">Lượt tiếp ➜</button></div>
+    </div>
+    <div class="panel act">
+      <h3>Đúng hay sai? <span class="bpill" data-badge="facts"></span></h3>
+      <div class="dim">Đúng 5/6 câu để nhận huy hiệu.</div>
+      <div class="prog"><i id="fa-p"></i></div><div class="dim small" id="fa-c"></div>
+      <div class="qbig" id="fa-q"></div>
+      <div class="yn"><button class="opt" data-k="1">✔ Đúng</button><button class="opt" data-k="0">✘ Sai</button></div>
+      <div id="fa-f"></div><div class="row"><button class="btn ghost" id="fa-nx">Câu tiếp ➜</button></div>
+    </div>
+  </div>
+  <details class="tnote"><summary>Gợi ý cho giáo viên</summary>Dùng ở tiết Thường thức âm nhạc – Giới thiệu cồng chiêng, đàn t'rưng của Tây Nguyên. Âm thanh trong học liệu được tổng hợp bằng mã để minh hoạ quy luật (vật to, dài → âm trầm; vật nhỏ, ngắn → âm cao), không thay thế được âm thanh nhạc cụ thật; giáo viên nên cho học sinh nghe thêm bản thu nhạc cụ thật trong tài liệu của SGK. Không gian văn hoá Cồng chiêng Tây Nguyên được UNESCO công nhận năm 2005. Liên hệ bài nghe Sông Đakrông mùa xuân về và không khí lễ hội mùa xuân của đồng bào Tây Nguyên.</details>
+</section>
+
+<!-- R4 SÂN KHẤU -->
+<section class="view" id="v-r4" hidden>
+  <div class="panel act">
+    <h3>Xưởng hoà tấu "Nhịp điệu mùa xuân" <span class="bpill" data-badge="create"></span></h3>
+    <div class="dim">Bật/tắt các ô để soạn một đoạn nhạc nền 2 ô nhịp (nhịp 2/4, mỗi ô là một móc đơn) cho tiết mục chào xuân của lớp. Dùng ít nhất 3 loại nhạc cụ rồi bấm Phát để nhận huy hiệu.</div>
+    <div class="row"><button class="btn main" id="sq-play">▶ Phát</button><button class="btn line" id="sq-stop">■ Dừng</button><button class="btn ghost" id="sq-demo">🌸 Mẫu gợi ý</button><button class="btn ghost" id="sq-clear">🧹 Xoá</button>
+      <label class="small">Tốc độ <input type="range" id="sq-bpm" min="70" max="130" value="96" style="width:120px;vertical-align:middle"></label></div>
+    <div class="seq" id="sq-grid"></div>
+    <div id="sq-f"></div>
+  </div>
+  <details class="tnote"><summary>Gợi ý cho giáo viên</summary>Dùng ở tiết Vận dụng – Sáng tạo: các nhóm soạn nhạc nền, sau đó dùng làm phần đệm khi biểu diễn liên khúc "Nhịp điệu mùa xuân – Chào đón năm mới" (gõ đệm bằng thanh phách, trống con, hoặc phát trực tiếp từ học liệu). Khuyến khích học sinh giải thích ý tưởng: dùng chiêng trầm ở phách mạnh, t'rưng ở phách nhẹ để tạo không khí lễ hội.</details>
+</section>
+
+
+<section class="view" id="v-r5" hidden>
+  <div class="quiz" id="quiz"></div>
+  <details class="tnote" style="max-width:820px;margin:14px auto 0"><summary>Gợi ý cho giáo viên</summary>Dùng ở phần Luyện tập hoặc củng cố cuối chủ đề, mỗi câu 30 giây. Đạt từ 6/8 câu nhận giấy chứng nhận Nghệ sĩ mùa xuân.</details>
+</section>
+
+<section class="view" id="v-info" hidden>
+  <div class="panel" style="max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:14px">
+    <span class="chip" style="align-self:flex-start">Thông tin học liệu (theo Công văn 5158/SGDĐT-GDTrH)</span>
+    <h2 style="font:800 28px 'Lexend',sans-serif;margin:0">Nhịp điệu mùa xuân – Học liệu tương tác và mô phỏng</h2>
+    <div style="overflow-x:auto"><table class="info" id="infoT"></table></div>
+  </div>
+</section>
+</div>
+<footer>Học liệu số Âm nhạc 7 · Ngô Thị Phương – Trường THCS Võ Thị Sáu, phường An Biên, Hải Phòng · Giáo viên đồng sáng tạo cùng AI</footer>
+<script>
+/* ====== KHUNG CHUNG (dùng cho các học liệu Toán 7) ====== */
+const $=id=>document.getElementById(id),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+function gcd(a,b){a=Math.abs(a);b=Math.abs(b);while(b){[a,b]=[b,a%b]}return a||1}
+function simp(f){const g=gcd(f.n,f.d);let n=f.n/g,d=f.d/g;if(d<0){n=-n;d=-d}return{n,d}}
+function parse(s){s=String(s).replace(/−/g,'-').replace(',','.').trim();
+  if(s.includes(' ')){const[w,fr]=s.split(' ');const[a,b]=fr.split('/').map(Number),W=Number(w);return simp({n:(Math.abs(W)*b+a)*(W<0?-1:1),d:b})}
+  if(s.includes('/')){const[a,b]=s.split('/').map(Number);return{n:a,d:b}}
+  const p=s.split('.');if(p.length===1)return{n:Number(s),d:1};
+  const d=Math.pow(10,p[1].length);return simp({n:Math.round(Number(s)*d),d})}
+function val(s){const f=parse(s);return f.n/f.d}
+function pretty(s){return String(s).replace(/-/g,'−')}
+function F(s){s=String(s);const neg=s[0]==='-',b=neg?s.slice(1):s;
+  if(b.includes(' ')){const[w,fr]=b.split(' ');const[n,d]=fr.split('/');return `<span class="fx">${neg?'−':''}${w}<span class="fr"><b>${n}</b><b>${d}</b></span></span>`}
+  if(b.includes('/')){const[n,d]=b.split('/');return `<span class="fx">${neg?'−':''}<span class="fr"><b>${n}</b><b>${d}</b></span></span>`}
+  return (neg?'−':'')+b}
+function fs(n,d){return (n<0?'−':'')+Math.abs(n)+(d===1?'':'/'+d)}
+function factors(n){const f=[];let d=2;n=Math.abs(n);while(n>1){while(n%d===0){f.push(d);n/=d}d++}return f}
+function decimal(a,b){const sign=(a<0)!==(b<0)&&a!==0?'-':'';a=Math.abs(a);b=Math.abs(b);
+  const int=Math.floor(a/b);let r=a%b;const seen={},digits=[],steps=[];let cs=-1;
+  while(r!==0&&digits.length<260){if(seen[r]!==undefined){cs=seen[r];break}seen[r]=digits.length;const q=Math.floor(r*10/b),nr=(r*10)%b;steps.push({r,q,nr});digits.push(q);r=nr}
+  const pre=cs<0?digits.join(''):digits.slice(0,cs).join(''),cyc=cs<0?'':digits.slice(cs).join('');
+  return{sign,int,pre,cyc,steps,repR:r}}
+function fmtD(d){return (d.sign?'−':'')+d.int+(d.pre||d.cyc?','+d.pre+(d.cyc?'('+d.cyc+')':''):'')}
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+
+/* âm thanh */
+let AC=null,soundOn=true;try{soundOn=localStorage.getItem('vts-snd')!=='0'}catch(e){}
+function beep(f,d,type,v,w){if(!soundOn)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();
+  const o=AC.createOscillator(),g=AC.createGain(),t=AC.currentTime+(w||0);o.type=type||'sine';o.frequency.value=f;
+  g.gain.setValueAtTime(v||.08,t);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+d+.03)}catch(e){}}
+const sfx={ok(){beep(660,.14);beep(990,.22,'sine',.08,.11)},bad(){beep(190,.28,'square',.035)},tap(){beep(540,.07,'triangle',.06)},
+  flip(){beep(420,.05,'triangle',.04)},tick(){beep(880,.03,'square',.02)},win(){[523,659,784,1047].forEach((f,i)=>beep(f,.3,'sine',.08,i*.13))}};
+
+/* pháo giấy + thông báo */
+let cv,cx,parts=[],raf=0;
+function confetti(n){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;cv=cv||$('cf');cx=cx||cv.getContext('2d');cv.width=innerWidth;cv.height=innerHeight;
+  const cols=['#fbbf24','#f43f5e','#3b82f6','#22c55e','#ec4899','#14b8a6','#a78bfa'];
+  for(let i=0;i<(n||70);i++)parts.push({x:innerWidth/2+(Math.random()-.5)*240,y:innerHeight*.35,vx:(Math.random()-.5)*13,vy:-Math.random()*12-4,r:Math.random()*6+4,c:cols[i%7],a:Math.random()*6,l:95});
+  if(!raf)tick()}
+function tick(){cx.clearRect(0,0,cv.width,cv.height);parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.45;p.a+=.2;p.l--;cx.save();cx.translate(p.x,p.y);cx.rotate(p.a);cx.fillStyle=p.c;cx.fillRect(-p.r/2,-p.r/4,p.r,p.r/2);cx.restore()});
+  parts=parts.filter(p=>p.l>0&&p.y<cv.height+20);raf=parts.length?requestAnimationFrame(tick):(cx.clearRect(0,0,cv.width,cv.height),0)}
+let toastT=0;function toast(t){const e=$('toast');e.innerHTML=t;e.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>e.classList.remove('show'),2600)}
+
+/* trạng thái, huy hiệu */
+const ST={b:{},name:''};
+function loadST(){try{const o=JSON.parse(localStorage.getItem(L.key)||'{}');ST.b=o.b||{};ST.name=o.name||''}catch(e){}}
+function saveST(){try{localStorage.setItem(L.key,JSON.stringify(ST))}catch(e){}}
+function award(k){if(ST.b[k])return false;ST.b[k]=1;saveST();sfx.win();confetti(110);toast('🏅 Huy hiệu mới: '+L.badges[k]);counts();return true}
+function counts(){const n=Object.keys(L.badges).filter(k=>ST.b[k]).length;$('bc').textContent=n;$('bt').textContent=Object.keys(L.badges).length;
+  $$('.bpill').forEach(p=>{const k=p.dataset.badge;p.classList.toggle('got',!!ST.b[k]);p.textContent=(ST.b[k]?'🏅 ':'○ ')+L.badges[k]});
+  $$('#hubRooms .room').forEach(b=>{const r=L.rooms.find(x=>x[0]===b.dataset.go);b.querySelector('.st').textContent='★ '+r[5].filter(k=>ST.b[k]).length+'/'+r[5].length})}
+function say(t){const v=$$('.view').find(x=>!x.hidden);const s=v&&v.querySelector('.say');if(s)s.innerHTML='<b>'+L.coach+':</b> '+t}
+function msg(id,t,cls){$(id).innerHTML=t?`<div class="msg ${cls||'info'}">${t}</div>`:''}
+function prog(p,i,n,s){$(p+'-p').style.width=(i/n*100)+'%';$(p+'-c').textContent='Câu '+Math.min(i+1,n)+'/'+n+' · Đúng ngay lần đầu: '+s}
+const STOP=[];function stopAll(){STOP.forEach(f=>{try{f()}catch(e){}})}
+function go(v){if(!$('v-'+v))v='hub';stopAll();$$('.view').forEach(x=>x.hidden=x.id!=='v-'+v);$$('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.go===v));
+  if(L.intro&&L.intro[v])say(L.intro[v]);if(v===L.quizRoom)qIntro();if(L.onEnter)L.onEnter(v);
+  try{history.replaceState(null,'','#'+v)}catch(e){}window.scrollTo(0,0)}
+
+/* thử thách tính giờ + giấy chứng nhận */
+let qi=0,qs=0,qt=null,tl=30,qLock=false,QS=[];
+STOP.push(()=>clearInterval(qt));
+function qIntro(){clearInterval(qt);$('quiz').innerHTML=`<div class="panel" style="text-align:center"><span class="chip">${L.quiz.length} câu · mỗi câu 30 giây</span>
+  <h2 style="font:800 30px 'Lexend',sans-serif;margin:12px 0 6px">${L.quizTitle}</h2><p class="dim">Đúng từ ${L.quizPass}/${L.quiz.length} câu trở lên để nhận giấy chứng nhận <b>${L.certTitle}</b>.</p>
+  <div class="row center"><input id="qName" class="numin" style="width:280px;font-size:17px;text-align:left" maxlength="40" placeholder="Tên và lớp của em" value="${(ST.name||'').replace(/"/g,'&quot;')}"></div>
+  <div class="row center"><button class="btn main" id="qGo">▶ Bắt đầu thử thách</button></div><p class="dim small">Tên chỉ lưu trên máy của em, không gửi đi đâu.</p></div>`;
+  $('qGo').onclick=()=>{ST.name=$('qName').value.trim();saveST();QS=L.quiz.map(q=>({...q,ord:shuffle(q.o.map((t,i)=>i))}));qi=0;qs=0;qRender()}}
+function qRender(){clearInterval(qt);const el=$('quiz');
+  if(qi>=QS.length){const pass=qs>=L.quizPass;if(pass)award('quiz');
+    const n=Object.keys(L.badges).filter(k=>ST.b[k]).length,N=Object.keys(L.badges).length;
+    el.innerHTML=pass?`<div class="cert"><div class="m">${L.certTop}</div><h2>GIẤY CHỨNG NHẬN</h2><div class="ct">${L.certTitle}</div><div style="margin-top:10px">Trao cho</div>
+      <div class="who" id="certWho">${ST.name||'. . . . . . . .'}</div><div>đã hoàn thành ${L.certWhat} với <b>${qs}/${QS.length}</b> câu đúng và đạt <b>${n}/${N}</b> huy hiệu.</div>
+      <div class="small" style="margin-top:6px;opacity:.8">Ngày ${new Date().toLocaleDateString('vi-VN')} · GV hướng dẫn: Ngô Thị Phương – Trường THCS Võ Thị Sáu, Hải Phòng</div>
+      <div class="row center"><input id="cName" maxlength="40" placeholder="Sửa tên của em" value="${(ST.name||'').replace(/"/g,'&quot;')}"></div>
+      <div class="small" style="margin-top:6px">📸 Chụp màn hình giấy chứng nhận gửi cô nhé!</div></div><div class="row center"><button class="btn ghost" id="qAgain">↻ Làm lại thử thách</button></div>`
+     :`<div class="panel" style="text-align:center"><h2 style="font:800 30px 'Lexend',sans-serif">${qs}/${QS.length} câu đúng</h2><p>Cần ${L.quizPass}/${QS.length} câu để nhận giấy chứng nhận. Em ôn lại các phòng rồi thử lại nhé!</p><div class="row center"><button class="btn main" id="qAgain">↻ Làm lại</button></div></div>`;
+    if(pass){confetti(160);$('cName').oninput=e=>{ST.name=e.target.value.trim();saveST();$('certWho').textContent=ST.name||'. . . . . . . .'}}
+    $('qAgain').onclick=()=>{QS=L.quiz.map(q=>({...q,ord:shuffle(q.o.map((t,i)=>i))}));qi=0;qs=0;qRender()};return}
+  const q=QS[qi];tl=30;qLock=false;
+  el.innerHTML=`<div class="panel"><div class="qtop"><span>Câu ${qi+1}/${QS.length}</span><span>Đúng: ${qs}</span><span id="qTime">⏱ 30 giây</span></div><div class="qbar"><i id="qBar" style="width:100%"></i></div>
+    <div class="qq">${q.q}</div><div class="opts" id="qOpts">${q.ord.map(i=>`<button class="opt" data-i="${i}">${q.o[i]}</button>`).join('')}</div><div id="qFb"></div>
+    <div class="row"><button class="btn main" id="qNext" hidden>Câu tiếp ➜</button></div></div>`;
+  $$('#qOpts .opt').forEach(b=>b.onclick=()=>qAns(+b.dataset.i));$('qNext').onclick=()=>{qi++;qRender()};
+  qt=setInterval(()=>{tl--;$('qTime').textContent='⏱ '+tl+' giây';$('qBar').style.width=(tl/30*100)+'%';if(tl<=5&&tl>0)sfx.tick();if(tl<=0)qAns(-1)},1000)}
+function qAns(i){if(qLock)return;qLock=true;clearInterval(qt);const q=QS[qi],ok=i===q.a;if(ok){qs++;sfx.ok()}else sfx.bad();
+  $$('#qOpts .opt').forEach(b=>{const k=+b.dataset.i;if(k===q.a)b.classList.add('right');else if(k===i)b.classList.add('wrong');b.disabled=true});
+  msg('qFb',(i<0?'⏰ Hết giờ! ':ok?'✅ Chính xác! ':'💭 Chưa đúng. ')+(q.e||''),ok?'ok':'warn');$('qNext').hidden=false;$('qNext').textContent=qi<QS.length-1?'Câu tiếp ➜':'Xem kết quả ➜'}
+
+/* khởi động */
+function boot(){loadST();
+  $('snd').textContent=soundOn?'🔊':'🔇';$('snd').onclick=()=>{soundOn=!soundOn;$('snd').textContent=soundOn?'🔊':'🔇';try{localStorage.setItem('vts-snd',soundOn?'1':'0')}catch(e){}};
+  $('nav').innerHTML=[['hub','00','Phòng chờ'],...L.rooms.map(r=>[r[0],r[3],r[1]]),['info','ⓘ','Thông tin học liệu']].map(r=>`<button data-go="${r[0]}"><span class="n">${r[1]}</span>${r[2]}</button>`).join('');
+  $$('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.go));
+  $('hubRooms').innerHTML=L.rooms.map(r=>`<button class="panel room" data-go="${r[0]}"><span class="t"><small>${r[3]}</small><b>${r[4]}</b></span><span><h3>${r[1]}</h3><p>${r[2]}</p><span class="st"></span></span></button>`).join('');
+  $$('#hubRooms .room').forEach(b=>b.onclick=()=>go(b.dataset.go));
+  L.rooms.forEach(r=>{const s=$('v-'+r[0]);if(s)s.insertAdjacentHTML('afterbegin',`<div class="rhead"><span class="chip">Phòng ${r[3]} · ${r[1]}</span><div class="coach"><span class="av">${L.avatar}</span><div class="say"></div></div></div>`)});
+  $('infoT').innerHTML=L.info.map(r=>`<tr><th>${r[0]}</th><td>${r[1]}</td></tr>`).join('');
+  counts();if(L.hero)L.hero();
+  const h=location.hash.slice(1);go($('v-'+h)?h:'hub')}
+
+/* ====== ÂM NHẠC 7 · CHỦ ĐỀ 5: NHỊP ĐIỆU MÙA XUÂN ====== */
+const L={key:'vts-amnhac7-cd5',coach:'Nhạc công Mùa Xuân',avatar:'🌸',
+ rooms:[['r1','Xưởng trường độ','Dấu nối, dấu chấm dôi, dấu miễn nhịp: nhìn, nghe và tính trường độ.','01','♩.',['sym','dur']],
+  ['r2','Phòng nhịp điệu','Nghe và chọn đúng tiết tấu; gõ theo tiết tấu, máy chấm độ chính xác.','02','𝅘𝅥𝅮',['listen','tap']],
+  ['r3','Đại ngàn Tây Nguyên','Tự gõ cồng chiêng, đàn t\'rưng; luyện tai nghe cao – thấp; đúng hay sai.','03','🔔',['explore','ear','facts']],
+  ['r4','Sân khấu mùa xuân','Xưởng hoà tấu: tự soạn nhạc nền chào xuân bằng chiêng, t\'rưng, phách.','04','♫',['create']],
+  ['r5','Thử thách & chứng nhận','8 câu hỏi tính giờ, nhận giấy chứng nhận Nghệ sĩ mùa xuân.','05','★',['quiz']]],
+ badges:{sym:'Thợ kí hiệu',dur:'Máy đếm phách',listen:'Đôi tai nhịp điệu',tap:'Tay gõ chuẩn',explore:'Nhà thám hiểm đại ngàn',ear:'Đôi tai tinh tường',facts:'Hiểu nhạc cụ dân tộc',create:'Nhà soạn nhạc nhí',quiz:'Nghệ sĩ mùa xuân'},
+ quizRoom:'r5',quizPass:6,quizTitle:'Thử thách Nghệ sĩ mùa xuân',certTitle:'Nghệ sĩ mùa xuân',certTop:'NHỊP ĐIỆU MÙA XUÂN · ÂM NHẠC 7 · CHỦ ĐỀ 5',certWhat:'thử thách Chủ đề Nhịp điệu mùa xuân',
+ intro:{r1:'Chào em! Mình là Nhạc công Mùa Xuân. Hôm nay mình học 3 kí hiệu giúp nốt nhạc <b>ngân dài hơn</b>. Bấm 🔊 để nghe nhé!',
+  r2:'Nhịp 2/4: mỗi ô nhịp có 2 phách, phách 1 mạnh, phách 2 nhẹ. Lắng nghe thật kĩ nhé!',
+  r3:'Chào mừng đến đại ngàn! Gõ thử từng chiếc chiêng, từng ống nứa xem âm thanh khác nhau thế nào.',
+  r4:'Sân khấu là của em! Soạn một đoạn nhạc nền thật vui để chào đón năm mới nhé.',
+  r5:'Thử thách cuối cùng! 8 câu, mỗi câu 30 giây. Cố lên nghệ sĩ nhí!'},
+ quiz:[
+  {q:'Dấu chấm dôi làm trường độ của nốt nhạc:',o:['tăng thêm một nửa','tăng gấp đôi','giảm đi một nửa','không thay đổi'],a:0,e:'Dấu chấm dôi làm tăng thêm một nửa trường độ của nốt.'},
+  {q:'Nốt trắng chấm dôi có trường độ bằng mấy nốt đen?',o:['3','2','4','1,5'],a:0,e:'Nốt trắng = 2 nốt đen; thêm một nửa (1) → 3 nốt đen.'},
+  {q:'Dấu nối dùng để:',o:['nối hai hay nhiều nốt cùng cao độ, cộng trường độ lại','nối hai nốt khác cao độ','báo hiệu kết thúc bài','báo hiệu hát to hơn'],a:0,e:'Nối các nốt khác cao độ là dấu luyến, không phải dấu nối.'},
+  {q:'Gặp dấu miễn nhịp, người biểu diễn sẽ:',o:['ngân hoặc nghỉ tự do, không theo nhịp','dừng hẳn bài hát','hát nhanh gấp đôi','hát nhỏ dần'],a:0,e:'Dấu miễn nhịp cho phép ngân, nghỉ tự do.'},
+  {q:'Cồng chiêng là nhạc cụ thuộc bộ:',o:['gõ (tự thân vang)','dây','hơi','phím'],a:0,e:'Cồng chiêng là nhạc cụ tự thân vang thuộc bộ gõ.'},
+  {q:'Đàn t\'rưng được làm bằng:',o:['các ống nứa dài, ngắn, to, nhỏ khác nhau','đồng thau','da thú căng trên khung gỗ','dây kim loại'],a:0,e:'Đàn t\'rưng làm bằng ống nứa.'},
+  {q:'Không gian văn hoá Cồng chiêng Tây Nguyên được UNESCO công nhận năm:',o:['2005','2003','2010','2015'],a:0,e:'UNESCO công nhận năm 2005.'},
+  {q:'Bài hát học trong Chủ đề 5 Nhịp điệu mùa xuân là:',o:['Mùa xuân ơi','Vì cuộc sống tươi đẹp','Khai trường','Đời cho em những nốt nhạc vui'],a:0,e:'Bài hát Mùa xuân ơi của nhạc sĩ Nguyễn Ngọc Thiện.'}],
+ info:[['Tên học liệu','Nhịp điệu mùa xuân'],['Loại học liệu','Học liệu tương tác và mô phỏng (mục II.2.3)'],['Môn học, lớp','Âm nhạc 7 – bộ sách Kết nối tri thức với cuộc sống'],['Bài học','Chủ đề 5. Nhịp điệu mùa xuân'],
+  ['Yêu cầu cần đạt','Nhận biết được các kí hiệu tăng trường độ: dấu nối, dấu chấm dôi, dấu miễn nhịp; thể hiện đúng trường độ khi đọc tiết tấu. Nhận biết được đặc điểm của cồng chiêng và đàn t\'rưng Tây Nguyên. Vận dụng, sáng tạo để biểu diễn trong liên khúc "Nhịp điệu mùa xuân – Chào đón năm mới".'],
+  ['Phạm vi','Học liệu hỗ trợ các nội dung Lí thuyết âm nhạc, luyện tiết tấu, Thường thức âm nhạc và Vận dụng – Sáng tạo. Phần học hát bài Mùa xuân ơi (Nguyễn Ngọc Thiện), nghe nhạc và Bài đọc nhạc số 4 giáo viên dùng tư liệu đi kèm SGK; học liệu không sao chép lời ca, bản nhạc để tôn trọng quyền tác giả.'],
+  ['Mục đích, đối tượng','Giáo viên dùng trong hoạt động khám phá, luyện tập, vận dụng; học sinh lớp 7 tự học, tự luyện. Dùng được trong dạy học trực tiếp, trực tuyến, kết hợp.'],
+  ['Hướng dẫn khai thác','Chọn phòng trên thanh điều hướng; bật loa thiết bị. Mỗi phòng có mục "Gợi ý cho giáo viên". Nút 🤖 mở trợ giảng AI chỉ gợi ý, không làm hộ. Chạy trên trình duyệt (máy tính, điện thoại, máy tính bảng), không cần cài đặt, không cần đăng nhập; trợ giảng AI cần kết nối Internet.'],
+  ['Tác giả','Ngô Thị Phương – Trường THCS Võ Thị Sáu, phường An Biên, thành phố Hải Phòng'],
+  ['Nguồn tài liệu','SGK Âm nhạc 7 (Kết nối tri thức với cuộc sống), Chủ đề 5; kế hoạch dạy học môn Âm nhạc 7 theo bộ sách. Các tiết tấu luyện tập do tác giả soạn.'],
+  ['Bản quyền','Âm thanh cồng chiêng, đàn t\'rưng, phách được tổng hợp bằng mã để minh hoạ; hình vẽ do tác giả tạo bằng mã; không dùng bản ghi, lời ca, bản nhạc của bên thứ ba. Phông chữ Baloo 2, Lexend, Be Vietnam Pro, JetBrains Mono (giấy phép SIL OFL).'],
+  ['Sử dụng trí tuệ nhân tạo','Có dùng trợ lý AI Claude (Anthropic) hỗ trợ thiết kế, viết mã; trợ giảng AI dùng Gemini (Google) với lời nhắc sư phạm do tác giả soạn. Tác giả đã kiểm tra, xác minh nội dung và chịu trách nhiệm về tính chính xác.'],
+  ['An toàn thông tin','Không thu thập, không gửi dữ liệu cá nhân; không dùng micro, camera. Tên trên giấy chứng nhận và huy hiệu chỉ lưu trên thiết bị của người dùng.'],['Phiên bản','1.0 – tháng 10/2026']],
+ hero:heroM5};
+
+/* ---------- ÂM THANH NHẠC CỤ (tổng hợp bằng mã) ---------- */
+function ctx(){if(!AC)AC=new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();return AC}
+function osc(a,type,f,t,peak,att,dec,f0){const o=a.createOscillator(),G=a.createGain();o.type=type;if(f0){o.frequency.setValueAtTime(f0,t);o.frequency.exponentialRampToValueAtTime(f,t+.25)}else o.frequency.setValueAtTime(f,t);
+  G.gain.setValueAtTime(.0001,t);G.gain.exponentialRampToValueAtTime(peak,t+att);G.gain.exponentialRampToValueAtTime(.0001,t+att+dec);o.connect(G);G.connect(a.destination);o.start(t);o.stop(t+att+dec+.05)}
+function gong(f,t,v){const a=ctx();t=t||a.currentTime;v=v||.22;[[1,1,3.2],[1.48,.45,2.2],[2.07,.3,1.6],[2.76,.18,1.1],[3.4,.1,.8]].forEach(([m,g,d])=>osc(a,'sine',f*m,t,v*g,.012,d,f*m*1.012))}
+function trung(f,t,v){const a=ctx();t=t||a.currentTime;v=v||.26;osc(a,'sine',f,t,v,.004,.55);osc(a,'triangle',f*2,t,v*.16,.003,.22);osc(a,'sine',f*3.9,t,v*.1,.002,.1)}
+function wood(t,acc,v){const a=ctx();t=t||a.currentTime;osc(a,'square',acc?1500:1050,t,(v||1)*(acc?.1:.06),.002,.045)}
+function held(f,t,dur){const a=ctx();t=t||a.currentTime;const o=a.createOscillator(),G=a.createGain();o.type='triangle';o.frequency.value=f;
+  G.gain.setValueAtTime(.0001,t);G.gain.exponentialRampToValueAtTime(.16,t+.02);G.gain.setValueAtTime(.16,t+Math.max(.05,dur-.08));G.gain.exponentialRampToValueAtTime(.0001,t+dur);o.connect(G);G.connect(a.destination);o.start(t);o.stop(t+dur+.02)}
+const NF={C4:261.63,D4:293.66,E4:329.63,G4:392,A4:440,C5:523.25,D5:587.33,E5:659.25};
+
+/* ---------- KÍ HIỆU NHẠC (vẽ bằng SVG) ---------- */
+const DUR={w:4,h:2,q:1,e:.5,s:.25},INKC='#2b1d33';
+function parseR(tok){const notes=[];let tie=false,t=0;tok.forEach(k=>{if(k==='|')return;if(k==='~'){tie=true;return}const dot=k.endsWith('.'),d=DUR[k.replace('.','')]*(dot?1.5:1);
+  if(tie&&notes.length)notes[notes.length-1].d+=d;else notes.push({t,d});tie=false;t+=d});return{notes,total:t}}
+function noteSVG(x,y,b,dot,fer){const fill=(b==='q'||b==='e'||b==='s')?INKC:'#fff';let h=`<ellipse cx="${x}" cy="${y}" rx="8.6" ry="6.2" transform="rotate(-20 ${x} ${y})" fill="${fill}" stroke="${INKC}" stroke-width="2.3"/>`;
+  if(b!=='w'){h+=`<line x1="${x+7.8}" y1="${y-2}" x2="${x+7.8}" y2="${y-44}" stroke="${INKC}" stroke-width="2.2"/>`}
+  if(b==='e'||b==='s')h+=`<path d="M${x+7.8} ${y-44} q 12 9 9 23" fill="none" stroke="${INKC}" stroke-width="2.4"/>`;
+  if(b==='s')h+=`<path d="M${x+7.8} ${y-35} q 12 9 9 23" fill="none" stroke="${INKC}" stroke-width="2.4"/>`;
+  if(dot)h+=`<circle cx="${x+17}" cy="${y-3}" r="2.8" fill="${INKC}"/>`;
+  if(fer){const fy=b==='w'?y-20:y-56;h+=`<path d="M${x-10} ${fy} A 11 11 0 0 1 ${x+12} ${fy}" fill="none" stroke="#d93a73" stroke-width="2.6"/><circle cx="${x+1}" cy="${fy-4}" r="2.6" fill="#d93a73"/>`}
+  return h}
+function staff(svg,tok,o){o=o||{};const y=62;let x=o.ts?60:26;let body='';const xs=[];
+  tok.forEach((k,i)=>{if(k==='|'){body+=`<line x1="${x-6}" y1="${y-24}" x2="${x-6}" y2="${y+24}" stroke="${INKC}" stroke-width="2"/>`;x+=16;return}
+    if(k==='~'){xs.push('~');return}const dot=k.endsWith('.'),b=k.replace('.','');body+=noteSVG(x,y,b,dot,o.fer===i);xs.push(x);x+=30+DUR[b]*(dot?1.5:1)*24});
+  xs.forEach((v,i)=>{if(v!=='~')return;const p=xs.slice(0,i).filter(n=>n!=='~').pop(),n=xs.slice(i+1).find(n=>n!=='~');if(p!=null&&n!=null)body+=`<path d="M${p+3} ${y+10} Q ${(p+n)/2} ${y+26} ${n-3} ${y+10}" fill="none" stroke="#d93a73" stroke-width="2.6"/>`});
+  const W=Math.max(x+(o.end?14:4),o.minW||0);let h=`<line x1="12" y1="${y}" x2="${W-4}" y2="${y}" stroke="#d9c3cc" stroke-width="2"/>`;
+  if(o.ts)h+=`<text x="30" y="${y-5}" text-anchor="middle" font-size="25" font-weight="900" fill="${INKC}">2</text><text x="30" y="${y+20}" text-anchor="middle" font-size="25" font-weight="900" fill="${INKC}">4</text>`;
+  if(o.end)h+=`<line x1="${W-12}" y1="${y-24}" x2="${W-12}" y2="${y+24}" stroke="${INKC}" stroke-width="2"/><line x1="${W-6}" y1="${y-24}" x2="${W-6}" y2="${y+24}" stroke="${INKC}" stroke-width="4"/>`;
+  svg.setAttribute('viewBox',`0 0 ${W} 100`);svg.innerHTML=h+body;return W}
+const fmtB=b=>String(b).replace('.',',');
+
+/* phát tiết tấu: đếm vào + nốt t'rưng */
+function playPattern(tok,bpm,countIn){const a=ctx(),B=60/(bpm||80),t0=a.currentTime+.15,ci=countIn?4:0;
+  for(let k=0;k<ci;k++)wood(t0+k*B,k%2===0);const st=t0+ci*B,R=parseR(tok);
+  for(let k=0;k<R.total;k++)wood(st+k*B,k%2===0,.5);R.notes.forEach(n=>trung(NF.G4,st+n.t*B,.3));return{st,B,R}}
+
+/* ---------- PHÒNG CHỜ ---------- */
+function heroM5(){let h=`<defs><radialGradient id="gg" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#f6d27a"/><stop offset=".7" stop-color="#c7902b"/><stop offset="1" stop-color="#8a5a00"/></radialGradient></defs>
+  <line x1="110" y1="10" x2="110" y2="48" stroke="#7a4a1a" stroke-width="4"/><g id="hg"><circle cx="110" cy="140" r="92" fill="url(#gg)" stroke="#7a4a1a" stroke-width="5"/><circle cx="110" cy="140" r="70" fill="none" stroke="#8a5a00" stroke-width="2" opacity=".6"/><circle cx="110" cy="140" r="24" fill="#e0b04f" stroke="#7a4a1a" stroke-width="3"/></g>`;
+  for(let k=0;k<7;k++){const y=40+k*34,len=200-k*18;h+=`<g class="tube" data-k="${k}"><rect x="${250}" y="${y}" width="${len}" height="22" rx="11" fill="#cfe7a8" stroke="#5f7d2a" stroke-width="2.5"/><line x1="${250+len*.3}" y1="${y}" x2="${250+len*.3}" y2="${y+22}" stroke="#5f7d2a" stroke-width="2"/></g>`}
+  h+=`<line x1="246" y1="30" x2="246" y2="290" stroke="#7a4a1a" stroke-width="4"/>`;$('heroSvg').innerHTML=h;
+  $('hGong').onclick=()=>{gong(98);const g=$('hg');g.classList.remove('gong','hit');void g.getBBox();g.setAttribute('class','gong hit');$('heroCap').textContent='🔔 Cồng chiêng: âm thanh trầm, rền, ngân rất lâu.'};
+  $('hTrung').onclick=()=>{const a=ctx(),t=a.currentTime;['C4','D4','E4','G4','A4','C5','A4','G4'].forEach((n,i)=>trung(NF[n],t+i*.16));$('heroCap').textContent='🎋 Đàn t\'rưng: âm thanh trong trẻo, róc rách như suối.';
+    $$('#heroSvg .tube').forEach((tb,i)=>setTimeout(()=>{tb.classList.add('hit');setTimeout(()=>tb.classList.remove('hit'),180)},i*160))}}
+
+/* ---------- R1a KÍ HIỆU ---------- */
+(function(){staff($('sy-tie'),['h','~','q'],{minW:220});staff($('sy-dot'),['h.'],{minW:220});staff($('sy-fer'),['q','q','h'],{minW:220,fer:2});
+  $$('#v-r1 [data-play]').forEach(b=>b.onclick=()=>{const a=ctx(),t=a.currentTime+.1,B=.75,k=b.dataset.play;
+    if(k==='tie'||k==='dot'){for(let i=0;i<3;i++)wood(t+i*B,i===0,.7);held(NF.G4,t,3*B);say(k==='tie'?'Nghe: 2 phách + 1 phách nối lại = ngân liền 3 phách, chỉ hát một lần.':'Nghe: nốt trắng (2 phách) thêm một nửa (1 phách) = 3 phách.')}
+    else{held(NF.E4,t,B*.9);held(NF.G4,t+B,B*.9);held(NF.C5,t+2*B,4.2);say('Nốt cuối có dấu miễn nhịp: ngân tự do, dài hơn hẳn nhịp bình thường!')}});
+  const T=[{f:['q','~','q'],q:'Kí hiệu hình vòng cung màu hồng nối hai nốt cùng cao độ là:',o:['Dấu nối','Dấu chấm dôi','Dấu miễn nhịp','Dấu lặng'],e:'Đó là dấu nối: hai nốt cùng cao độ, trường độ cộng lại.'},
+   {f:['h.'],q:'Dấu chấm nhỏ bên phải nốt trắng là:',o:['Dấu chấm dôi','Dấu nối','Dấu miễn nhịp','Dấu nhắc lại'],e:'Đó là dấu chấm dôi.'},
+   {f:['q','h'],fer:1,q:'Kí hiệu màu hồng đặt phía trên nốt trắng là:',o:['Dấu miễn nhịp','Dấu nối','Dấu chấm dôi','Dấu lặng đen'],e:'Nửa vòng tròn bao quanh dấu chấm là dấu miễn nhịp.'},
+   {q:'Dấu chấm dôi làm trường độ của nốt nhạc:',o:['tăng thêm một nửa','tăng gấp đôi','giảm đi một nửa','không thay đổi'],e:'Tăng thêm một nửa trường độ của chính nốt đó.'},
+   {q:'Khi gặp dấu miễn nhịp, người hát:',o:['ngân hoặc nghỉ tự do, không theo nhịp','dừng hẳn bài hát','hát nhanh gấp đôi','hát nhỏ lại'],e:'Dấu miễn nhịp cho phép ngân, nghỉ tự do.'},
+   {q:'Hai nốt cùng cao độ được nối với nhau bằng dấu nối thì:',o:['chỉ hát một lần, trường độ cộng lại','hát hai lần riêng biệt','bỏ nốt thứ hai','hát nốt thứ hai cao hơn'],e:'Hát liền một hơi, độ dài bằng tổng hai nốt.'}];
+  let i=0,s=0,done=false;
+  function load(){done=false;const t=T[i];$('sy-q').innerHTML=t.q;$('sy-fig').hidden=!t.f;if(t.f)staff($('sy-svg'),t.f,{minW:200,fer:t.fer});msg('sy-f','');prog('sy',i,T.length,s);
+    $('sy-o').innerHTML=shuffle(t.o.map((x,k)=>k)).map(k=>`<button class="opt" data-k="${k}">${t.o[k]}</button>`).join('');
+    $$('#sy-o .opt').forEach(b=>b.onclick=()=>{if(done)return;done=true;const ok=b.dataset.k==='0';if(ok){s++;sfx.ok()}else sfx.bad();$$('#sy-o .opt').forEach(x=>{if(x.dataset.k==='0')x.classList.add('right');else if(x===b)x.classList.add('wrong')});msg('sy-f',(ok?'✅ ':'💭 ')+t.e,ok?'ok':'warn');prog('sy',i+1,T.length,s)})}
+  $('sy-nx').onclick=()=>{if(!done){msg('sy-f','Em chọn đáp án trước nhé!','info');return}
+    if(i<T.length-1){i++;load()}else{const p=s>=5;msg('sy-f',p?'🎉 Em đúng '+s+'/6 câu!':'Em đúng '+s+'/6. Cần 5/6 để nhận huy hiệu, làm lại nhé!',p?'ok':'warn');if(p)award('sym');else{i=0;s=0;setTimeout(load,1800)}}};
+  load()})();
+
+/* ---------- R1b MÁY TÍNH TRƯỜNG ĐỘ ---------- */
+(function(){const T=[[['h.'],3,[3,2,2.5,4]],[['q.'],1.5,[1.5,1,2,.5]],[['h','~','q'],3,[3,2,1,4]],[['q','~','e'],1.5,[1.5,1,.5,2]],[['w'],4,[4,2,3,1]],[['q','~','q'],2,[2,1,3,4]],[['e.'],.75,[.75,.5,1,1.5]],[['h','~','h'],4,[4,2,3,5]]];
+  let i=0,s=0,done=false;
+  function play(){const a=ctx(),t=a.currentTime+.1,B=.75,d=T[i][1];for(let k=0;k<Math.ceil(d);k++)wood(t+k*B,k%2===0,.8);held(NF.G4,t,d*B)}
+  function load(){done=false;staff($('du-svg'),T[i][0],{minW:220});msg('du-f','');prog('du',i,T.length,s);
+    $('du-o').innerHTML=shuffle(T[i][2]).map(v=>`<button class="opt" data-v="${v}">${fmtB(v)} phách</button>`).join('');
+    $$('#du-o .opt').forEach(b=>b.onclick=()=>{if(done)return;done=true;const v=+b.dataset.v,ok=v===T[i][1];if(ok){s++;sfx.ok()}else sfx.bad();
+      $$('#du-o .opt').forEach(x=>{if(+x.dataset.v===T[i][1])x.classList.add('right');else if(x===b)x.classList.add('wrong')});
+      const tk=T[i][0],ex=tk.length===1?(tk[0].endsWith('.')?`${tk[0][0]==='h'?'Nốt trắng 2':tk[0][0]==='q'?'Nốt đen 1':'Nốt móc đơn 0,5'} phách + một nửa = ${fmtB(T[i][1])} phách.`:`Nốt tròn = ${fmtB(T[i][1])} phách.`):`Dấu nối cộng trường độ hai nốt: ${tk.filter(k=>k!=='~').map(k=>fmtB(DUR[k])).join(' + ')} = ${fmtB(T[i][1])} phách.`;
+      msg('du-f',(ok?'✅ Chính xác! ':'💭 Chưa đúng. ')+ex+' 🔊 Nghe và đếm phách nhé!',ok?'ok':'warn');prog('du',i+1,T.length,s);setTimeout(play,250)})}
+  $('du-play').onclick=play;
+  $('du-nx').onclick=()=>{if(!done){msg('du-f','Em chọn đáp án trước nhé!','info');return}
+    if(i<T.length-1){i++;load()}else{const p=s>=6;msg('du-f',p?'🎉 Em tính đúng '+s+'/8 câu!':'Em đúng '+s+'/8. Cần 6/8 để nhận huy hiệu, làm lại nhé!',p?'ok':'warn');if(p)award('dur');else{i=0;s=0;setTimeout(load,1800)}}};
+  window.__du={get a(){return T[i][1]}};load()})();
+
+/* ---------- R2a NGHE VÀ CHỌN ---------- */
+const PAT=[['q.','e','|','h'],['q','q','|','q.','e'],['e','e','q','|','h'],['h','~','|','q','q'],['q.','e','|','q.','e'],['e','q','e','|','h'],['q','e','e','|','q','~','e','e']];
+(function(){const R=[0,1,2,3,4,5];let i=0,s=0,done=false,opts=[];
+  function load(){done=false;const c=R[i],others=shuffle(PAT.map((p,k)=>k).filter(k=>k!==c)).slice(0,2);opts=shuffle([c,...others]);msg('li-f','');prog('li',i,R.length,s);
+    $('li-o').innerHTML=opts.map((k,j)=>`<button class="notopt" data-k="${k}"><div class="lb">${'ABC'[j]}</div><svg></svg></button>`).join('');
+    $$('#li-o .notopt').forEach(b=>{staff(b.querySelector('svg'),PAT[+b.dataset.k],{ts:true,end:true,minW:300});b.onclick=()=>pick(b)})}
+  function pick(b){if(done)return;done=true;const ok=+b.dataset.k===R[i];if(ok){s++;sfx.ok()}else sfx.bad();
+    $$('#li-o .notopt').forEach(x=>{if(+x.dataset.k===R[i])x.classList.add('right');else if(x===b)x.classList.add('wrong')});
+    msg('li-f',(ok?'✅ Đúng rồi! ':'💭 Chưa đúng. ')+'Bấm Nghe lại và nhìn bản nhạc đúng (khung xanh) để so sánh.',ok?'ok':'warn');prog('li',i+1,R.length,s)}
+  $('li-play').onclick=()=>playPattern(PAT[R[i]],80,true);
+  $('li-nx').onclick=()=>{if(!done){msg('li-f','Em nghe rồi chọn một bản nhạc trước nhé!','info');return}
+    if(i<R.length-1){i++;load()}else{const p=s>=5;msg('li-f',p?'🎉 Em chọn đúng '+s+'/6 tiết tấu!':'Em đúng '+s+'/6. Cần 5/6 để nhận huy hiệu, làm lại nhé!',p?'ok':'warn');if(p)award('listen');else{i=0;s=0;setTimeout(load,1800)}}};
+  window.__li={get k(){return R[i]}};load()})();
+
+/* ---------- R2b GÕ THEO TIẾT TẤU ---------- */
+(function(){const CH=[0,4,2,1];let cur=0,run=null,taps=[],tm=[];const passed=new Set();
+  function draw(){staff($('tp-svg'),PAT[CH[cur]],{ts:true,end:true,minW:380});$('tp-pick').innerHTML=CH.map((k,j)=>`<button class="opt${j===cur?' right':''}" data-j="${j}" style="text-align:center">Tiết tấu ${j+1}${passed.has(j)?' ⭐':''}</button>`).join('');
+    $$('#tp-pick .opt').forEach(b=>b.onclick=()=>{if(run)return;cur=+b.dataset.j;draw();msg('tp-f','')});$('tp-done').textContent='Đã đạt: '+passed.size+'/2 tiết tấu'}
+  function clear(){tm.forEach(clearTimeout);tm=[];$$('#tp-beats i').forEach(x=>x.classList.remove('on'))}
+  STOP.push(()=>{clear();run=null});
+  function lamp(at,k){const a=ctx();tm.push(setTimeout(()=>{$$('#tp-beats i').forEach((x,j)=>x.classList.toggle('on',j===k))},Math.max(0,(at-a.currentTime)*1000)))}
+  function start(demo){if(run)return;clear();const a=ctx(),B=60/80,t0=a.currentTime+.3,R=parseR(PAT[CH[cur]]);
+    for(let k=0;k<4;k++){wood(t0+k*B,k%2===0);lamp(t0+k*B,k)}const st=t0+4*B;for(let k=0;k<R.total;k++){wood(st+k*B,k%2===0,.45);lamp(st+k*B,k%4)}
+    if(demo){R.notes.forEach(n=>trung(NF.G4,st+n.t*B,.3));tm.push(setTimeout(clear,(st+R.total*B-a.currentTime)*1000+300));return}
+    run={st,B,exp:R.notes.map(n=>st+n.t*B)};taps=[];msg('tp-f','🥁 Đếm 1 – 2 – 1 – 2 rồi gõ nhé!','info');
+    tm.push(setTimeout(()=>evalTaps(taps),(st+R.total*B+.6-a.currentTime)*1000))}
+  function evalTaps(tp){if(!run)return;const tol=.2,used=new Set();let hit=0;run.exp.forEach(e=>{let bi=-1,bd=9;tp.forEach((t,j)=>{const d=Math.abs(t-e);if(!used.has(j)&&d<bd){bd=d;bi=j}});if(bi>=0&&bd<=tol){used.add(bi);hit++}});
+    const extra=tp.length-used.size,n=run.exp.length,sc=Math.max(0,Math.round((hit-extra*.5)/n*100));run=null;clear();
+    const ok=sc>=75;if(ok){passed.add(cur);sfx.ok();confetti(40)}else sfx.bad();
+    msg('tp-f',`${ok?'✅':'💭'} Em gõ đúng ${hit}/${n} nốt${extra?`, thừa ${extra} lần gõ`:''} → <b>${sc}%</b>. `+(ok?'Tuyệt vời!':'Bấm Nghe mẫu, vỗ tay theo rồi thử lại nhé.'),ok?'ok':'warn');draw();if(passed.size>=2)award('tap')}
+  function tap(){if(!run)return;const a=ctx();taps.push(a.currentTime);trung(NF.G4,a.currentTime,.25);const z=$('tp-zone');z.classList.add('hit');setTimeout(()=>z.classList.remove('hit'),90)}
+  $('tp-zone').addEventListener('pointerdown',e=>{e.preventDefault();tap()});
+  document.addEventListener('keydown',e=>{if(e.code==='Space'&&!$('v-r2').hidden&&run){e.preventDefault();tap()}});
+  $('tp-go').onclick=()=>start(false);$('tp-demo').onclick=()=>start(true);
+  window.__tp={perfect(){if(run)evalTaps(run.exp.slice())},get running(){return !!run},pick(j){cur=j;draw()}};draw()})();
+
+/* ---------- R3a KHÁM PHÁ NHẠC CỤ ---------- */
+(function(){const G=[[95,110,82,98],[230,120,64,147],[345,128,48,196]],TB=[['C4',340],['D4',314],['E4',288],['G4',258],['A4',230],['C5',204],['D5',180],['E5',158]];
+  const NAME={C4:'Đô',D4:'Rê',E4:'Mi',G4:'Son',A4:'La',C5:'Đô²',D5:'Rê²',E5:'Mi²'};const gg=new Set(),tt=new Set();
+  let h=`<defs><radialGradient id="eg" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#f6d27a"/><stop offset=".7" stop-color="#c7902b"/><stop offset="1" stop-color="#8a5a00"/></radialGradient></defs><line x1="10" y1="22" x2="410" y2="22" stroke="#7a4a1a" stroke-width="6" stroke-linecap="round"/>`;
+  G.forEach(([x,y,r],k)=>{h+=`<line x1="${x}" y1="22" x2="${x}" y2="${y-r}" stroke="#7a4a1a" stroke-width="3"/><g class="gong" data-k="${k}" style="transform-box:fill-box;transform-origin:center"><circle cx="${x}" cy="${y}" r="${r}" fill="url(#eg)" stroke="#7a4a1a" stroke-width="4"/><circle cx="${x}" cy="${y}" r="${r*.72}" fill="none" stroke="#8a5a00" stroke-width="2" opacity=".55"/><text x="${x}" y="${y+6}" text-anchor="middle" font-size="15" font-weight="800" fill="#4a2d05">${['to','vừa','nhỏ'][k]}</text></g>`});
+  $('ex-gong').innerHTML=h;
+  h=`<line x1="18" y1="10" x2="18" y2="232" stroke="#7a4a1a" stroke-width="5"/>`;TB.forEach(([n,len],k)=>{const y=12+k*27;h+=`<g class="tube" data-k="${k}"><rect x="24" y="${y}" width="${len}" height="21" rx="10.5" fill="#cfe7a8" stroke="#5f7d2a" stroke-width="2.5"/><line x1="${24+len*.33}" y1="${y}" x2="${24+len*.33}" y2="${y+21}" stroke="#5f7d2a" stroke-width="2"/><text x="${30+len}" y="${y+16}" font-size="13" font-weight="800" fill="#3d5a12">${NAME[n]}</text></g>`});
+  $('ex-trung').innerHTML=h;
+  const upd=()=>{$('ex-c').textContent=`Đã gõ: ${gg.size}/3 chiếc chiêng · ${tt.size}/5 ống nứa`;if(gg.size>=3&&tt.size>=5)award('explore')};
+  $$('#ex-gong .gong').forEach(g=>g.addEventListener('pointerdown',()=>{const k=+g.dataset.k;gong(G[k][3]);gg.add(k);g.classList.remove('hit');void g.getBBox();g.classList.add('hit');say(k===0?'Chiêng to nhất: âm trầm, rền như sấm!':k===2?'Chiêng nhỏ: âm cao hơn hẳn.':'Chiêng vừa: âm ở giữa.');upd()}));
+  $$('#ex-trung .tube').forEach(t=>t.addEventListener('pointerdown',()=>{const k=+t.dataset.k;trung(NF[TB[k][0]]);tt.add(k);t.classList.add('hit');setTimeout(()=>t.classList.remove('hit'),180);if(k===0)say('Ống dài nhất → âm trầm nhất.');if(k===7)say('Ống ngắn nhất → âm cao nhất.');upd()}));
+  upd();window.__ex={all(){[0,1,2].forEach(k=>$$('#ex-gong .gong')[k].dispatchEvent(new Event('pointerdown')));[0,1,2,3,4].forEach(k=>$$('#ex-trung .tube')[k].dispatchEvent(new Event('pointerdown')))}}})();
+
+/* ---------- R3b ĐÔI TAI ---------- */
+(function(){let ord=0;const T=[{q:'Hai ống nứa được gõ lần lượt. Âm nào <b>cao hơn</b>?',o:['Âm thứ nhất','Âm thứ hai'],a:1,p(){const a=ctx(),t=a.currentTime+.1;trung(NF.C4,t);trung(NF.A4,t+.7)},e:'Âm thứ hai (ống ngắn hơn) cao hơn.'},
+  {q:'Đây là âm thanh của nhạc cụ nào?',o:['Cồng chiêng','Đàn t\'rưng'],a:0,p(){gong(110)},e:'Âm trầm, rền, ngân rất lâu: cồng chiêng.'},
+  {q:'Hai ống nứa được gõ lần lượt. Âm nào <b>cao hơn</b>?',o:['Âm thứ nhất','Âm thứ hai'],a:0,p(){const a=ctx(),t=a.currentTime+.1;trung(NF.E5,t);trung(NF.G4,t+.7)},e:'Âm thứ nhất cao hơn.'},
+  {q:'Một chiếc chiêng to và một chiếc chiêng nhỏ được gõ lần lượt. Âm nào do chiếc chiêng <b>to</b> phát ra?',o:['Âm thứ nhất','Âm thứ hai'],a:null,p(){const a=ctx(),t=a.currentTime+.1;if(ord===0){gong(98,t);gong(196,t+1.6)}else{gong(196,t);gong(98,t+1.6)}},e:'Chiêng to phát ra âm trầm hơn.'},
+  {q:'Đây là âm thanh của nhạc cụ nào?',o:['Cồng chiêng','Đàn t\'rưng'],a:1,p(){const a=ctx(),t=a.currentTime+.1;['G4','A4','C5','A4','G4','E4'].forEach((n,i)=>trung(NF[n],t+i*.18))},e:'Âm trong trẻo, ngắn, róc rách: đàn t\'rưng.'}];
+  let i=0,s=0,done=false;const ans=()=>T[i].a===null?ord:T[i].a;
+  function load(){done=false;ord=Math.random()<.5?0:1;$('ea-q').innerHTML=T[i].q;msg('ea-f','');prog('ea',i,T.length,s);$('ea-o').innerHTML=T[i].o.map((x,k)=>`<button class="opt" data-k="${k}">${x}</button>`).join('');
+    $$('#ea-o .opt').forEach(b=>b.onclick=()=>{if(done)return;done=true;const ok=+b.dataset.k===ans();if(ok){s++;sfx.ok()}else sfx.bad();$$('#ea-o .opt').forEach(x=>{if(+x.dataset.k===ans())x.classList.add('right');else if(x===b)x.classList.add('wrong')});msg('ea-f',(ok?'✅ ':'💭 ')+T[i].e,ok?'ok':'warn');prog('ea',i+1,T.length,s)})}
+  $('ea-play').onclick=()=>T[i].p();
+  $('ea-nx').onclick=()=>{if(!done){msg('ea-f','Em nghe rồi chọn đáp án trước nhé!','info');return}
+    if(i<T.length-1){i++;load()}else{const p=s>=4;msg('ea-f',p?'🎉 Đôi tai tuyệt vời! Đúng '+s+'/5.':'Em đúng '+s+'/5. Cần 4/5 để nhận huy hiệu, nghe lại nhé!',p?'ok':'warn');if(p)award('ear');else{i=0;s=0;setTimeout(load,1800)}}};
+  window.__ea={get a(){return ans()}};load()})();
+
+/* ---------- R3c ĐÚNG HAY SAI ---------- */
+(function(){const T=[['Cồng chiêng là nhạc cụ tự thân vang thuộc bộ gõ.',1,'Đúng: cồng chiêng thuộc bộ gõ, tự thân vang.'],['Cồng chiêng được làm bằng gỗ quý.',0,'Sai: cồng chiêng được làm bằng đồng thau.'],
+  ['Chiếc chiêng có đường kính càng lớn thì âm thanh càng trầm, rền.',1,'Đúng: chiêng to cho âm trầm, rền như tiếng sấm.'],['Đàn t\'rưng làm bằng các ống nứa dài, ngắn, to, nhỏ khác nhau.',1,'Đúng.'],
+  ['Ống nứa của đàn t\'rưng càng dài thì âm thanh càng cao.',0,'Sai: ống càng dài thì âm càng trầm; ống càng ngắn thì âm càng cao.'],['Không gian văn hoá Cồng chiêng Tây Nguyên được UNESCO công nhận năm 2005.',1,'Đúng.']];
+  let i=0,s=0,done=false;
+  function load(){done=false;$('fa-q').textContent=T[i][0];msg('fa-f','');prog('fa',i,T.length,s);$$('#v-r3 .yn .opt').forEach(x=>x.classList.remove('right','wrong'))}
+  $$('#v-r3 .yn .opt').forEach(b=>b.onclick=()=>{if(done)return;done=true;const ok=+b.dataset.k===T[i][1];if(ok){s++;sfx.ok()}else sfx.bad();$$('#v-r3 .yn .opt').forEach(x=>{if(+x.dataset.k===T[i][1])x.classList.add('right');else if(x===b)x.classList.add('wrong')});msg('fa-f',(ok?'✅ ':'💭 ')+T[i][2],ok?'ok':'warn');prog('fa',i+1,T.length,s)});
+  $('fa-nx').onclick=()=>{if(!done){msg('fa-f','Em chọn Đúng hoặc Sai trước nhé!','info');return}
+    if(i<T.length-1){i++;load()}else{const p=s>=5;msg('fa-f',p?'🎉 Em đúng '+s+'/6 câu!':'Em đúng '+s+'/6. Cần 5/6 để nhận huy hiệu, làm lại nhé!',p?'ok':'warn');if(p)award('facts');else{i=0;s=0;setTimeout(load,1800)}}};
+  window.__fa={get k(){return T[i][1]}};load()})();
+
+/* ---------- R4 XƯỞNG HOÀ TẤU ---------- */
+(function(){const ROWS=[['🔔 Chiêng trầm',t=>gong(98,t,.2)],['🔔 Chiêng cao',t=>gong(196,t,.16)],["🎋 T'rưng Son",t=>trung(NF.G4,t)],["🎋 T'rưng La",t=>trung(NF.A4,t)],["🎋 T'rưng Đô",t=>trung(NF.C5,t)],['🥢 Phách',t=>wood(t,false,1.3)]];
+  const N=8;let grid=ROWS.map(()=>Array(N).fill(false)),timer=0,step=0,next=0,loops=0;
+  function draw(){$('sq-grid').innerHTML='<table><tr><th></th>'+[...Array(N)].map((_,k)=>`<td class="${k===4?'bar':''} small dim" style="text-align:center">${k%2?'·':(k/2%2?2:1)}</td>`).join('')+'</tr>'+ROWS.map((r,i)=>`<tr class="r${i}"><th>${r[0]}</th>${grid[i].map((on,k)=>`<td class="${k===4?'bar':''}"><button class="${on?'on':''}" data-r="${i}" data-k="${k}" aria-label="${r[0]} ô ${k+1}"></button></td>`).join('')}</tr>`).join('')+'</table>';
+    $$('#sq-grid button').forEach(b=>b.onclick=()=>{const r=+b.dataset.r,k=+b.dataset.k;grid[r][k]=!grid[r][k];b.classList.toggle('on');if(grid[r][k])ROWS[r][1](ctx().currentTime)})}
+  function stop(){clearInterval(timer);timer=0;$$('#sq-grid button.now').forEach(b=>b.classList.remove('now'))}
+  STOP.push(stop);
+  function used(){return grid.filter(r=>r.some(Boolean)).length}
+  $('sq-play').onclick=()=>{if(timer)return;if(!grid.some(r=>r.some(Boolean))){msg('sq-f','Em bật vài ô trước rồi bấm Phát nhé!','info');return}
+    const a=ctx();step=0;loops=0;next=a.currentTime+.1;
+    timer=setInterval(()=>{const SPB=60/+$('sq-bpm').value/2;while(next<a.currentTime+.12){const k=step%N,at=next;grid.forEach((r,i)=>{if(r[k])ROWS[i][1](at)});
+      setTimeout(()=>{$$('#sq-grid button').forEach(b=>b.classList.toggle('now',+b.dataset.k===k))},Math.max(0,(at-a.currentTime)*1000));
+      next+=SPB;step++;if(step%N===0){loops++;if(loops===1){if(used()>=3){award('create');msg('sq-f','🎉 Bản hoà tấu của em có '+used()+' loại âm thanh. Hãy dùng nó làm nhạc nền khi biểu diễn liên khúc chào xuân!','ok')}else msg('sq-f','Hay lắm! Thêm nhạc cụ để đủ ít nhất 3 loại âm thanh nhé.','info')}}}},25)};
+  $('sq-stop').onclick=stop;
+  $('sq-clear').onclick=()=>{stop();grid=ROWS.map(()=>Array(N).fill(false));draw();msg('sq-f','')};
+  $('sq-demo').onclick=()=>{stop();grid=ROWS.map(()=>Array(N).fill(false));[[0,0],[0,4],[1,2],[1,6],[2,1],[2,5],[3,3],[4,7],[5,0],[5,2],[5,4],[5,6]].forEach(([r,k])=>grid[r][k]=true);draw();msg('sq-f','🌸 Mẫu gợi ý: chiêng trầm ở phách mạnh, t\'rưng điểm xuyết ở phách nhẹ. Bấm Phát để nghe rồi sửa theo ý em!','info')};
+  draw()})();
+
+boot();
+</script>
+<!-- ===== TRỢ GIẢNG AI – NHỊP ĐIỆU MÙA XUÂN (dán ngay TRƯỚC thẻ </body> trong index.html) ===== -->
+<style>
+#tgai-btn{position:fixed;right:18px;bottom:18px;z-index:99999;display:flex;align-items:center;gap:8px;padding:12px 18px;border:none;border-radius:999px;background:linear-gradient(135deg,#2dd4bf,#0ea5e9);color:#04221f;font:700 15px/1 'Be Vietnam Pro',system-ui,sans-serif;cursor:pointer;box-shadow:0 8px 24px rgba(45,212,191,.35)}
+#tgai-btn:hover{transform:translateY(-2px)}
+#tgai-box{position:fixed;right:18px;bottom:78px;z-index:99999;width:370px;max-width:calc(100vw - 32px);height:520px;max-height:calc(100vh - 110px);display:none;flex-direction:column;background:#0b1f24;border:1px solid #1f4a4f;border-radius:20px;box-shadow:0 18px 50px rgba(0,0,0,.5);font-family:'Be Vietnam Pro',system-ui,sans-serif;color:#e6fffb;overflow:hidden}
+#tgai-box.open{display:flex}
+#tgai-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#0f2c32;border-bottom:1px solid #1f4a4f}
+#tgai-head b{font-size:15px}
+#tgai-head small{display:block;font-size:12px;color:#8fbfba;font-weight:400}
+#tgai-x{background:none;border:none;color:#8fbfba;font-size:22px;cursor:pointer}
+#tgai-log{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.tgai-b{padding:9px 12px;border-radius:14px;font-size:14px;line-height:1.5;max-width:88%;white-space:pre-wrap}
+.tgai-a{align-self:flex-start;background:#133a40;border-bottom-left-radius:4px}
+.tgai-u{align-self:flex-end;background:#2dd4bf;color:#04221f;border-bottom-right-radius:4px}
+#tgai-chips{display:flex;gap:6px;flex-wrap:wrap;padding:0 12px 8px}
+.tgai-c{border:1px solid #1f4a4f;background:transparent;color:#bdf5ec;border-radius:999px;padding:5px 10px;font:13px 'Be Vietnam Pro',system-ui,sans-serif;cursor:pointer}
+#tgai-f{display:flex;gap:8px;padding:10px 12px;border-top:1px solid #1f4a4f}
+#tgai-q{flex:1;min-width:0;background:#0f2c32;border:1px solid #1f4a4f;border-radius:12px;padding:10px;color:#e6fffb;font:15px 'Be Vietnam Pro',system-ui,sans-serif}
+#tgai-send{border:none;border-radius:12px;padding:0 14px;background:#2dd4bf;color:#04221f;font-weight:700;cursor:pointer}
+#tgai-rule{font-size:11.5px;color:#8fbfba;padding:0 12px 10px}
+@media(max-width:600px){#tgai-btn .tgai-t{display:none}#tgai-btn{padding:14px;font-size:22px}}
+/* Khi trang được nhúng (Google Site): nút thành thanh ở đầu trang, khung chat mở ngay bên dưới */
+.tgai-embed #tgai-btn{position:relative;right:auto;bottom:auto;width:calc(100% - 24px);margin:10px 12px 0;justify-content:center;padding:12px 18px;font-size:15px}
+.tgai-embed #tgai-btn .tgai-t{display:inline}
+.tgai-embed #tgai-box{position:absolute;top:66px;bottom:auto;right:12px;height:500px;max-height:none}
+</style>
+
+<button id="tgai-btn" aria-label="Mở trợ giảng AI">🤖<span class="tgai-t"> Hỏi trợ giảng AI</span></button>
+<div id="tgai-box" role="dialog" aria-label="Trợ giảng AI">
+  <div id="tgai-head"><div><b>🤖 Trợ giảng AI</b><small>Âm nhạc 7 · Chủ đề 5: Nhịp điệu mùa xuân</small></div><button id="tgai-x" aria-label="Đóng">×</button></div>
+  <div id="tgai-log"><div class="tgai-b tgai-a">Chào em! Mình là trợ giảng AI của Nhịp điệu mùa xuân. Em thắc mắc về kí hiệu nhạc hay nhạc cụ Tây Nguyên cứ hỏi nhé 😊</div></div>
+  <div id="tgai-chips">
+    <button class="tgai-c">Dấu chấm dôi là gì?</button>
+    <button class="tgai-c">Cồng chiêng và đàn t'rưng khác nhau thế nào?</button>
+    <button class="tgai-c">Gợi ý cho câu em đang làm</button>
+  </div>
+  <div id="tgai-f"><input id="tgai-q" maxlength="300" placeholder="Nhập câu hỏi của em…"><button id="tgai-send">Gửi</button></div>
+  <div id="tgai-rule">🛡️ Hỏi để hiểu, không hỏi để chép · Không ghi thông tin cá nhân · AI có thể sai, hãy kiểm tra với SGK và thầy cô.</div>
+</div>
+
+<script>
+(function(){
+  // Đang nằm trong khung nhúng (Google Site)? -> đưa nút lên đầu trang để luôn nhìn thấy
+  var inFrame=false;try{inFrame=window.self!==window.top}catch(e){inFrame=true}
+  if(inFrame){document.documentElement.classList.add('tgai-embed');var bt=document.getElementById('tgai-btn');document.body.insertBefore(bt,document.body.firstChild);document.body.style.position='relative';document.body.appendChild(document.getElementById('tgai-box'))}
+  var box=document.getElementById('tgai-box'),log=document.getElementById('tgai-log'),inp=document.getElementById('tgai-q'),hist=[],busy=false;
+  document.getElementById('tgai-btn').onclick=function(){box.classList.toggle('open');if(box.classList.contains('open'))inp.focus()};
+  document.getElementById('tgai-x').onclick=function(){box.classList.remove('open')};
+  function add(t,who){var d=document.createElement('div');d.className='tgai-b '+who;d.textContent=t;log.appendChild(d);log.scrollTop=log.scrollHeight;return d}
+  function where(){
+    var v=[].slice.call(document.querySelectorAll('.view')).find(function(e){return !e.hidden}),t=v?v.innerText.replace(/\s+/g,' ').slice(0,320):'';
+    return 'Học sinh đang dùng học liệu "Nhịp điệu mùa xuân" (Âm nhạc 7, Chủ đề 5: Nhịp điệu mùa xuân). Phần đang xem: "'+t+'". KHÔNG nói ra đáp án của câu đang làm, chỉ gợi ý cách nghĩ.';
+  }
+  async function ask(text){
+    var q=(text||inp.value).trim(); if(!q||busy)return; inp.value=''; busy=true;
+    add(q,'tgai-u'); var w=add('Trợ giảng đang suy nghĩ…','tgai-a');
+    try{
+      var r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q,context:where(),history:hist.slice(-6)})});
+      var j=await r.json(); if(!r.ok||!j.reply)throw 0;
+      w.textContent=j.reply; hist.push({role:'user',text:q},{role:'ai',text:j.reply});
+    }catch(e){w.textContent='Trợ giảng AI đang tạm nghỉ. Em thử lại sau hoặc hỏi thầy cô nhé!'}
+    busy=false;
+  }
+  document.getElementById('tgai-send').onclick=function(){ask()};
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter')ask()});
+  document.querySelectorAll('.tgai-c').forEach(function(b){b.onclick=function(){ask(b.textContent)}});
+})();
+</script>
+<!-- ===== HẾT ĐOẠN TRỢ GIẢNG AI ===== -->
+
+<!-- Vercel Web Analytics -->
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
